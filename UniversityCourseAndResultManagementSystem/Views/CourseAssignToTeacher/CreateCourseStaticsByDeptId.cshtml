@@ -1,0 +1,72 @@
+﻿@model IEnumerable<UniversityCourseAndResultManagementSystem.Models.Course>
+
+@{
+    ViewBag.Title = "GetCourseStaticsByDeptId";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Course Statics </h2>
+
+<div class="form-group">
+    @Html.Label("Department ")
+    @Html.DropDownList("DepartmentId", null, "--Select--",
+        htmlAttributes: new { @class = "form-control" })
+</div>
+
+<table id="myTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name/Title</th>
+            <th>Semester</th>
+            <th>Assigned To</th>
+        </tr>
+    </thead>
+
+</table>
+
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+
+@section scripts
+{
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        $("#DepartmentId").change(function () {
+            var deptId = $("#DepartmentId").val();
+            var parameter = { deptId: deptId }
+
+            //  $("#DepartmentId").append('<option value="">--Select--</option>');
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetAllAssignCourses", "CourseAssignToTeacher")',
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(parameter),
+                success: function (data) {
+
+                    $("#myTable").show();
+                    table.clear().draw(false);
+                    $.each(data, function (key, value) {
+                        table.row.add([
+                            value.CourseCode, value.CoursName, value.CourseSemester, value.AssignTeacherName
+                        ]
+                        ).draw(false);
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        var table = $('#myTable').DataTable();
+    });
+    </script>
+}

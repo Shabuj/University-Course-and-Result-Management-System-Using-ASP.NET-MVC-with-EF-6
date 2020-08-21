@@ -1,0 +1,70 @@
+﻿@model IEnumerable<UniversityCourseAndResultManagementSystem.Models.ClassRoomAllocation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.DepartmentCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Room.RoomNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SevenDayWeek.DayCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.DepartmentCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SevenDayWeek.DayCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClassRoomAllocationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClassRoomAllocationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClassRoomAllocationId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Unassign all Courses";
+}
+<div class="container sm100">
+    <div class="row st_login_form">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="addDepartment">
+                <h3>Unassign all Courses</h3>
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { onsubmit = "return ConfirmUnassign()" }))
+                {
+                    <p align="center">
+                        <input type="submit" id="unAssignCourse" name="unAssignCourse" value="Unassign Courses">
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    if (@ViewData["Message"] != "")
+    {
+        <script language="javascript">
+            alert('@ViewData["Message"]');
+        </script>
+    }
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    function ConfirmUnassign() {
+        var ans = confirm("Are You Sure to Unassign all Courses?");
+        if (ans === true) {
+            return true;
+        } else {
+            return false;
+        }
+    }</script>

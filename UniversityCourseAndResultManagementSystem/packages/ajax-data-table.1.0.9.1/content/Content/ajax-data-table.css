@@ -1,0 +1,236 @@
+﻿table.ajax-data-table-grid
+{
+    border: solid 1px #ccc;
+    border-collapse: collapse;
+
+    clear: both;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+}
+
+    table.ajax-data-table-grid td
+    {
+        padding: 5px;
+        border: solid 1px #ccc;
+    }
+
+    table.ajax-data-table-grid th
+    {
+        padding: 6px 5px;
+        text-align: center;
+        background-color: #eee;
+        border: solid 1px #ccc;
+    }
+
+    table.ajax-data-table-grid tr:hover
+    {
+        background-color: #eeeeff;
+    }
+
+    table.ajax-data-table-grid .ajax-data-table-true
+    {
+        background-image: url('images/ok.gif');
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+    }
+
+    table.ajax-data-table-grid .ajax-data-table-false
+    {
+        background-image: url('images/not-ok.gif');
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+    }
+
+.ajax-data-table-clickable
+{
+    cursor: pointer;
+}
+
+
+.ajax-data-table-drag-hanlder
+{
+    border-style: solid;
+    border-width: 1px;
+    cursor: move;
+    background-color: #eee;
+    border-top-color: #CCCCCC;
+    border-left-color: #CCCCCC;
+}
+
+.ajax-data-table-drag-handler:hover
+{
+    background-color: #e7e7e7;
+}
+
+.ajax-data-table-bulk-actions
+{
+    list-style-type: none;
+    font-size: 1.2em;
+}
+    .ajax-data-table-bulk-actions button
+    {
+        color: #337ab7;
+    }
+
+    ul.ajax-data-table-bulk-actions li
+    {
+        margin: 2px;
+        float: right;
+    }
+
+    ul.ajax-data-table-bulk-actions a
+    {
+        padding: 3px;
+        text-decoration: none;
+        background-color: #eeeeff;
+        border: 1px solid #bbb;
+    }
+
+
+        ul.ajax-data-table-bulk-actions a:hover
+        {
+            background-color: #ccc;
+        }
+
+.ajax-data-table-break
+{
+    clear: both;
+}
+
+.ajax-data-table-pagination-container
+{
+    text-align: right;
+}
+
+
+/*.ajax-data-table-container .pagination li
+{
+    margin: 2px;
+    position: relative;
+    padding: 4px 0;
+    cursor: pointer;
+    float: left;
+    list-style: none;
+}*/
+
+.ajax-data-table-container ul
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*.ajax-data-table-container .pagination select {
+    padding: 1px 0;
+}
+
+.ajax-data-table-container .pagination a, .ajax-data-table-container .pagination select
+{
+    font-weight: bold;
+    outline: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 1px solid #c5dbec;
+    
+    color: #2e6e9e;
+}
+
+.ajax-data-table-container .pagination li a
+{
+    padding: 3px 6px 2px; 
+    text-decoration: none;
+}
+
+.ajax-data-table-container .pagination.disabled li a, .ajax-data-table-container .pagination.disabled select {
+    color: #ccc;
+}
+
+    .ajax-data-table-container .pagination a:hover
+    {
+        font-weight: bold;
+        outline: none;
+        border: 1px solid #79b7e7;
+        color: #1d5987;
+    }
+
+.ajax-data-table-container .pagination .next-off, .ajax-data-table-container .pagination .previous-off
+{
+    display: block;
+    padding: 3px 6px 2px;
+    font-weight: bold;
+    color: #808080;
+}
+
+
+.ajax-data-table-container .pagination .active
+{
+    color: #FF0000;
+}
+
+.ajax-data-table-container .pagination.disabled .active
+{
+    color: #FF0000;
+}
+
+    .ajax-data-table-container .pagination .active:hover
+    {
+        color: #FF0000;
+    }
+
+.ajax-data-table-container .pagination label
+{
+    padding: 5px 5px 15px 5px;
+    font-size: 0.8em;
+    color: #666666;
+}
+*/
+.ajax-data-table-container .loader
+{
+    width: 64px;
+    height: 1em;
+    display: inline-block;
+
+    background-image: url('ajax-data-table-loader.gif');
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.ajax-data-table-sortable
+{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+    .ajax-data-table-sortable .ascending, .ajax-data-table-sortable .descending
+    {
+        width: 12px;
+        height: 12px;
+        background-image: url('ajax-data-table-icons.png');
+        background-repeat: no-repeat;
+        overflow: hidden;
+        float: left;
+    }
+
+    .ajax-data-table-sortable .ascending
+    {
+        background-position: 0px 4px;
+    }
+
+    .ajax-data-table-sortable .descending
+    {
+        background-position: 0px -10px;
+    }
+
+table.ajax-data-table-grid td.ajax-data-table-summary
+{
+    padding: 6px 5px;
+    background-color: #eee;
+    border: solid 1px #ccc;
+}
+
+.ajax-data-table-grid-item {
+    display: inline-block;
+    padding: 15px;
+}

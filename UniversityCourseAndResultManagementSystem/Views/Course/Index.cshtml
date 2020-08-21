@@ -1,0 +1,66 @@
+﻿@model IEnumerable<UniversityCourseAndResultManagementSystem.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.DepartmentCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Semester.SemesterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoursName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseCredit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDescription)
+        </th>
+        <th>Action</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester.SemesterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoursName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseCredit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+            </td>
+        </tr>
+    }
+
+</table>

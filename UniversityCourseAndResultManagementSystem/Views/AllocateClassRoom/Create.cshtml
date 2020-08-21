@@ -1,0 +1,118 @@
+﻿@model UniversityCourseAndResultManagementSystem.Models.ClassRoomAllocation
+@using FlashMessage;
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <h4 style="color:green;text-align:center">@Html.Flash()</h4>
+    <hr />
+    <h4>Allocate ClassRoom</h4>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DepartmentId, ViewBag.Departments as SelectList, "--Select--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CourseId, "Course", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="CourseId" id="CourseId" , class="form-control">
+                <option value="">---Select---</option>
+            </select><br />
+            @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RoomId, "Room", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.RoomId, ViewBag.Rooms as SelectList, "--Select--", new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DayId, "Day", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DayId, ViewBag.SevenDayWeeks as SelectList, "--Select--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DayId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TimeFrom, "From", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input id="TimeFrom" name="TimeFrom" type="time" class="form-control">
+            @Html.ValidationMessageFor(model => model.TimeFrom, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TimeTo, "To", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input id="TimeTo" name="TimeTo" type="time" class="form-control">
+            @Html.ValidationMessageFor(model => model.TimeTo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Allocate" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+@section scripts
+{
+    <script>
+
+ 
+    $(document).ready(function () {
+        $("#DepartmentId").change(function () {
+            var deptId = $("#DepartmentId").val();
+            $("#CourseId").empty();
+
+            $("#CourseId").append('<option value= "">---select---</option>');
+
+            var parameter = { deptId: deptId }
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetCourseByDeptId", "AllocateClassRoom")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(parameter),
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CourseCode + '</option>');
+
+                    });
+
+                }
+            });
+              
+        });
+    });
+    </script>
+}

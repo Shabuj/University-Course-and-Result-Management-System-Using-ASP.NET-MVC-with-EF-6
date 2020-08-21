@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UniversityCourseAndResultManagementSystem.Models.Department>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View All Department</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("print", "PrintAll")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Code")
+        </th>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DepartmentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentId })
+            </td>
+        </tr>
+    }
+
+</table>
